@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Official portfolio of Syed Madanin Shoaib, a Computer Science Engineering student passionate about software development, problem solving and continuous learning.">
+
+    <meta name="keywords"
+          content="Syed Shoaib, Portfolio, Computer Science Engineering Student, Web Developer, Software Developer, GitHub">
+
+    <meta name="author"
+          content="Syed Madanin Shoaib">
+
+    <meta property="og:title"
+          content="Syed Madanin Shoaib | Portfolio">
+
+    <meta property="og:description"
+          content="Computer Science Engineering Student • Learning • Building • Growing">
+
+    <meta property="og:type"
+          content="website">
+
+    <title>Syed Madanin Shoaib | Portfolio</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+
+    <div class="background">
+
+        <div class="blob blob-one"></div>
+
+        <div class="blob blob-two"></div>
+
+        <div class="grid-overlay"></div>
+
+    </div>
+
+    <!-- Scroll Progress -->
+
+    <div id="progressBar"></div>
+
+    <!-- Header -->
+
+    <header id="header">
+
+        <div class="container nav-container">
+
+            <a href="#home"
+               class="logo"
+               aria-label="Homepage">
+
+                Shoaib<span>.</span>
+
+            </a>
+
+            <nav>
+
+                <ul class="nav-links">
+
+                    <li><a href="#home">Home</a></li>
+
+                    <li><a href="#about">About</a></li>
+
+                    <li><a href="#skills">Skills</a></li>
+
+                    <li><a href="#projects">Projects</a></li>
+
+                    <li><a href="#connect">Connect</a></li>
+
+                </ul>
+
+            </nav>
+
+            <div class="nav-actions">
+
+                <button id="themeToggle"
+                        aria-label="Toggle Theme">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+                <button id="menuBtn"
+                        aria-label="Open Menu">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+
+        <section id="home"
+                 class="hero container">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+
+                    <i class="fa-solid fa-code"></i>
+
+                    PORTFOLIO • 2026
+
+                </div>
+
+                <p class="hero-role">
+
+                    COMPUTER SCIENCE ENGINEERING STUDENT
+
+                </p>
+
+                <h1>
+
+                    Learning.<br>
+
+                    Building.<br>
+
+                    Growing<span class="dot">.</span>
+
+                </h1>
+
+                <p class="hero-description">
+
+                    Hi, I'm <strong>Syed Madanin Shoaib</strong>,
+                    a Computer Science Engineering student passionate
+                    about building practical software, exploring new
+                    technologies, and continuously improving my skills
+                    through real-world projects.
+
+                </p>
+
+                <div class="typing-container">
+
+                    <span id="typing"></span>
+
+                    <span class="cursor">|</span>
+
+                </div>
+
+                <div class="hero-buttons">
+
+                    <a href="#projects"
+                       class="btn btn-primary">
+
+                        <i class="fa-solid fa-folder-open"></i>
+
+                        View Projects
+
+                    </a>
+
+                    <a href="#connect"
+                       class="btn btn-secondary">
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                        Connect
+
+                    </a>
+
+                    <a href="#"
+                       class="btn btn-outline disabled-btn"
+                       aria-disabled="true">
+
+                        <i class="fa-solid fa-file-arrow-down"></i>
+
+                        Resume
+
+                        <small>Coming Soon</small>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Profile Card -->
+
+            <div class="profile-card">
+
+                <div class="profile-logo">
+
+                    <!-- Custom SVG Logo -->
+
+                    <svg width="120"
+                         height="120"
+                         viewBox="0 0 120 120"
+                         xmlns="http://www.w3.org/2000/svg">
+
+                        <defs>
+
+                            <linearGradient id="logoGradient"
+                                            x1="0%"
+                                            y1="0%"
+                                            x2="100%"
+                                            y2="100%">
+
+                                <stop offset="0%"
+                                      stop-color="#4F8CFF"/>
+
+                                <stop offset="100%"
+                                      stop-color="#7C5CFF"/>
+
+                            </linearGradient>
+
+                        </defs>
+
+                        <circle cx="60"
+                                cy="60"
+                                r="56"
+                                fill="#0f172a"
+                                stroke="url(#logoGradient)"
+                                stroke-width="3"/>
+
+                        <path d="M38 45 L25 60 L38 75"
+                              stroke="url(#logoGradient)"
+                              stroke-width="4"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"/>
+
+                        <path d="M82 45 L95 60 L82 75"
+                              stroke="url(#logoGradient)"
+                              stroke-width="4"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"/>
+
+                        <path d="M68 34 L52 86"
+                              stroke="white"
+                              stroke-width="3.5"
+                              stroke-linecap="round"/>
+
+                    </svg>
+
+                </div>
+
+                <h2>Syed Madanin Shoaib</h2>
+
+                <p class="profile-title">
+
+                    Computer Science Engineering Student
+
+                </p>
+
+                <div class="profile-info">
+
+                    <div>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Karnataka, India
+
+                    </div>
+
+                    <div>
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <a href="mailto:syedshoaib22a@gmail.com">
+
+                            syedshoaib22a@gmail.com
+
+                        </a>
+
+                    </div>
+
+                    <div>
+
+                        <i class="fa-brands fa-github"></i>
+
+                        <a href="https://github.com/syedshoaibb"
+                           target="_blank"
+                           rel="noopener noreferrer">
+
+                            github.com/syedshoaibb
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="exploring">
+
+                    <h3>Currently Exploring</h3>
+
+                    <ul>
+
+                        <li>Software Development</li>
+
+                        <li>Problem Solving</li>
+
+                        <li>Prompt Engineering</li>
+
+                        <li>Continuous Learning</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+                <!-- ================= ABOUT ================= -->
+
+        <section id="about" class="section container reveal">
+
+            <div class="section-header">
+
+                <span class="section-badge">ABOUT ME</span>
+
+                <h2>Who I Am</h2>
+
+                <p>
+                    Passionate about technology, driven by curiosity, and committed to continuous improvement.
+                </p>
+
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-content glass-card">
+
+                    <h3>A Little About Me</h3>
+
+                    <p>
+
+                        Hello! I'm <strong>Syed Madanin Shoaib</strong>, a Computer Science Engineering
+                        student with a strong interest in software development and modern technologies.
+                        I enjoy transforming ideas into practical projects while continuously improving
+                        my technical skills.
+
+                    </p>
+
+                    <p>
+
+                        Every project I build is an opportunity to learn something new. I believe that
+                        consistency, curiosity, and hands-on practice are the keys to becoming a better
+                        software developer.
+
+                    </p>
+
+                    <p>
+
+                        My goal is to build meaningful applications, strengthen my programming
+                        fundamentals, and grow one project at a time.
+
+                    </p>
+
+                </div>
+
+                <div class="about-cards">
+
+                    <div class="info-card glass-card">
+
+                        <i class="fa-solid fa-graduation-cap"></i>
+
+                        <h4>Education</h4>
+
+                        <p>Computer Science Engineering</p>
+
+                    </div>
+
+                    <div class="info-card glass-card">
+
+                        <i class="fa-solid fa-code"></i>
+
+                        <h4>Focus</h4>
+
+                        <p>Software Development</p>
+
+                    </div>
+
+                    <div class="info-card glass-card">
+
+                        <i class="fa-solid fa-book-open"></i>
+
+                        <h4>Learning</h4>
+
+                        <p>Building One Project At A Time</p>
+
+                    </div>
+
+                    <div class="info-card glass-card">
+
+                        <i class="fa-solid fa-lightbulb"></i>
+
+                        <h4>Mindset</h4>
+
+                        <p>Always Curious, Always Improving</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+
+        <!-- ================= SKILLS ================= -->
+
+        <section id="skills" class="section container reveal">
+
+            <div class="section-header">
+
+                <span class="section-badge">SKILLS</span>
+
+                <h2>Technologies & Tools</h2>
+
+                <p>
+                    Technologies I'm familiar with and continuously improving through practice.
+                </p>
+
+            </div>
+
+            <div class="skills-grid">
+
+                <article class="skill-card glass-card">
+
+                    <i class="fa-brands fa-html5"></i>
+
+                    <h3>HTML5</h3>
+
+                    <p>
+                        Building semantic, structured, and accessible web pages.
+                    </p>
+
+                </article>
+
+                <article class="skill-card glass-card">
+
+                    <i class="fa-brands fa-css3-alt"></i>
+
+                    <h3>CSS3</h3>
+
+                    <p>
+                        Creating responsive layouts and modern user interfaces.
+                    </p>
+
+                </article>
+
+                <article class="skill-card glass-card">
+
+                    <i class="fa-brands fa-java"></i>
+
+                    <h3>Java</h3>
+
+                    <p>
+                        Learning object-oriented programming and core Java concepts.
+                    </p>
+
+                </article>
+
+                <article class="skill-card glass-card">
+
+                    <i class="fa-brands fa-python"></i>
+
+                    <h3>Python</h3>
+
+                    <p>
+                        Understanding programming fundamentals and scripting basics.
+                    </p>
+
+                </article>
+
+                <article class="skill-card glass-card">
+
+                    <i class="fa-solid fa-c"></i>
+
+                    <h3>C Programming</h3>
+
+                    <p>
+                        Strong foundation in programming logic and problem solving.
+                    </p>
+
+                </article>
+
+                <article class="skill-card glass-card">
+
+                    <i class="fa-brands fa-git-alt"></i>
+
+                    <h3>Git & GitHub</h3>
+
+                    <p>
+                        Version control, repository management, and project collaboration.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+
+
+
+            <div class="learning-section">
+
+                <div class="section-header">
+
+                    <span class="section-badge">
+
+                        CURRENTLY EXPLORING
+
+                    </span>
+
+                    <h2>Always Learning</h2>
+
+                </div>
+
+                <div class="learning-grid">
+
+                    <div class="learning-card glass-card">
+
+                        <i class="fa-solid fa-laptop-code"></i>
+
+                        <h3>Software Development</h3>
+
+                        <p>
+
+                            Building projects while strengthening software engineering
+                            fundamentals.
+
+                        </p>
+
+                    </div>
+
+                    <div class="learning-card glass-card">
+
+                        <i class="fa-solid fa-brain"></i>
+
+                        <h3>Problem Solving</h3>
+
+                        <p>
+
+                            Developing logical thinking through consistent coding practice.
+
+                        </p>
+
+                    </div>
+
+                    <div class="learning-card glass-card">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        <h3>Prompt Engineering</h3>
+
+                        <p>
+
+                            Exploring how AI can improve productivity and creativity.
+
+                        </p>
+
+                    </div>
+
+                    <div class="learning-card glass-card">
+
+                        <i class="fa-solid fa-rocket"></i>
+
+                        <h3>Continuous Growth</h3>
+
+                        <p>
+
+                            Learning, experimenting, and improving every single day.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="glass-card beyond-card">
+
+                <h3>Beyond Coding</h3>
+
+                <p>
+
+                    Beyond programming, I enjoy exploring emerging technologies,
+                    experimenting with AI tools, and continuously expanding my
+                    knowledge. I believe curiosity, consistency, and continuous
+                    learning are the foundation of long-term growth in technology.
+
+                </p>
+
+            </div>
+
+        </section>
+                <!-- ================= PROJECTS ================= -->
+
+        <section id="projects" class="section container reveal">
+
+            <div class="section-header">
+
+                <span class="section-badge">PROJECTS</span>
+
+                <h2>Featured Projects</h2>
+
+                <p>
+                    Every project represents another step in my journey as a software developer.
+                </p>
+
+            </div>
+
+            <div class="projects-grid">
+
+                <!-- Portfolio Project -->
+
+                <article class="project-card glass-card">
+
+                    <div class="project-icon">
+
+                        <i class="fa-solid fa-laptop-code"></i>
+
+                    </div>
+
+                    <h3>Personal Portfolio Website</h3>
+
+                    <p>
+
+                        My first personal project built using HTML, CSS, and JavaScript.
+                        This portfolio showcases my skills, learning journey, and will
+                        continue evolving as I build more software projects.
+
+                    </p>
+
+                    <div class="project-tags">
+
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>Responsive</span>
+
+                    </div>
+
+                    <div class="project-buttons">
+
+                        <a href="#"
+                           class="btn btn-primary">
+
+                            <i class="fa-solid fa-globe"></i>
+
+                            Live Demo
+
+                        </a>
+
+                        <a href="https://github.com/syedshoaibb"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-secondary">
+
+                            <i class="fa-brands fa-github"></i>
+
+                            GitHub
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+
+
+                <!-- Coming Soon -->
+
+                <article class="project-card glass-card future-project">
+
+                    <div class="project-icon">
+
+                        <i class="fa-solid fa-code"></i>
+
+                    </div>
+
+                    <h3>More Projects Coming Soon</h3>
+
+                    <p>
+
+                        I'm actively learning and building new projects.
+                        This portfolio will continue to grow with practical
+                        software applications, experiments, and new learning experiences.
+
+                    </p>
+
+                    <div class="coming-soon">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        Currently Building
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+
+
+        <!-- ================= CONNECT ================= -->
+
+        <section id="connect" class="section container reveal">
+
+            <div class="section-header">
+
+                <span class="section-badge">CONNECT</span>
+
+                <h2>Let's Connect</h2>
+
+                <p>
+
+                    Feel free to connect with me through email or my professional profiles.
+
+                </p>
+
+            </div>
+
+            <div class="connect-grid">
+
+                <article class="glass-card contact-card">
+
+                    <h3>
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        Email
+
+                    </h3>
+
+                    <a href="mailto:syedshoaib22a@gmail.com">
+
+                        syedshoaib22a@gmail.com
+
+                    </a>
+
+                </article>
+
+
+
+
+
+                <article class="glass-card contact-card">
+
+                    <h3>
+
+                        <i class="fa-solid fa-user-group"></i>
+
+                        Find Me Online
+
+                    </h3>
+
+                    <div class="social-links">
+
+                        <a href="https://github.com/syedshoaibb"
+                           target="_blank"
+                           rel="noopener noreferrer">
+
+                            <i class="fa-brands fa-github"></i>
+
+                            @syedshoaibb
+
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/syed-madanin-shoaib-3a25b7331/"
+                           target="_blank"
+                           rel="noopener noreferrer">
+
+                            <i class="fa-brands fa-linkedin"></i>
+
+                            LinkedIn
+
+                        </a>
+
+                        <a href="https://www.instagram.com/_itx_shoaibb_/"
+                           target="_blank"
+                           rel="noopener noreferrer">
+
+                            <i class="fa-brands fa-instagram"></i>
+
+                            @_itx_shoaibb_
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container footer-content">
+
+            <h2>Shoaib<span>.</span></h2>
+
+            <p>
+
+                Computer Science Engineering Student
+
+            </p>
+
+            <div class="footer-links">
+
+                <a href="#home">Home</a>
+
+                <a href="#about">About</a>
+
+                <a href="#skills">Skills</a>
+
+                <a href="#projects">Projects</a>
+
+                <a href="#connect">Connect</a>
+
+            </div>
+
+            <p class="footer-text">
+
+                Designed & Developed by Syed Madanin Shoaib
+
+            </p>
+
+            <p class="footer-signature">
+
+                Learning • Building • Growing
+
+            </p>
+
+            <p class="copyright">
+
+    © <span id="year"></span> Syed Madanin Shoaib. All Rights Reserved.
+
+</p>
+
+        </div>
+
+    </footer>
+
+
+
+
+
+    <!-- Back To Top -->
+
+    <button id="backToTop"
+            aria-label="Back To Top">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
