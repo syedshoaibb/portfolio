@@ -1,6 +1,7 @@
 /* ==========================================================
-   PORTFOLIO V1.0
+   PORTFOLIO V1.1.1
    Author : Syed Madanin Shoaib
+   Modern Portfolio Script
 ========================================================== */
 
 /* ==========================================================
@@ -8,22 +9,48 @@
 ========================================================== */
 
 const header = document.getElementById("header");
+const navContainer = document.querySelector(".nav-container");
 const progressBar = document.getElementById("progressBar");
 const backToTop = document.getElementById("backToTop");
+
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.querySelector(".nav-links");
+
 const themeToggle = document.getElementById("themeToggle");
+
 const typingText = document.getElementById("typing");
 
+const sections = document.querySelectorAll("section");
+const navItems = document.querySelectorAll(".nav-links a");
+
+const reveals = document.querySelectorAll(".reveal");
+
+const yearElement = document.getElementById("year");
+
 /* ==========================================================
-   TYPING EFFECT
+   INTRO ELEMENTS
 ========================================================== */
 
-const phrases = [
+const introScreen = document.getElementById("intro-screen");
+const mainContent = document.getElementById("main-content");
+
+const introTitle = document.querySelector(".intro-content h1");
+const introSubtitle = document.querySelector(".intro-subtitle");
+const introTyping = document.getElementById("intro-typing");
+const introLine = document.querySelector(".intro-line");
+
+const introCircle = document.querySelector(".brand-logo circle");
+const introPaths = document.querySelectorAll(".brand-logo path");
+
+/* ==========================================================
+   GLOBAL VARIABLES
+========================================================== */
+
+const heroPhrases = [
 
     "Exploring Software Development.",
 
-    "Building Projects.",
+    "Building Quality Projects.",
 
     "Learning Every Day.",
 
@@ -31,43 +58,64 @@ const phrases = [
 
 ];
 
-let phraseIndex = 0;
-let charIndex = 0;
-let deleting = false;
+const introWords = [
 
-function typeEffect() {
+    "Learn.",
 
-    const current = phrases[phraseIndex];
+    "Build.",
 
-    if (!deleting) {
+    "Create.",
+
+    "Repeat."
+
+];
+
+let heroPhraseIndex = 0;
+let heroCharIndex = 0;
+let heroDeleting = false;
+
+let introWordIndex = 0;
+let introLetterIndex = 0;
+
+/* ==========================================================
+   HERO TYPING EFFECT
+========================================================== */
+
+function typeHero(){
+
+    if(!typingText) return;
+
+    const current = heroPhrases[heroPhraseIndex];
+
+    if(!heroDeleting){
 
         typingText.textContent =
-            current.substring(0, charIndex++);
+        current.substring(0,heroCharIndex++);
 
-        if (charIndex > current.length) {
+        if(heroCharIndex > current.length){
 
-            deleting = true;
+            heroDeleting = true;
 
-            setTimeout(typeEffect, 1500);
+            setTimeout(typeHero,1500);
 
             return;
 
         }
 
-    } else {
+    }else{
 
         typingText.textContent =
-            current.substring(0, charIndex--);
+        current.substring(0,heroCharIndex--);
 
-        if (charIndex < 0) {
+        if(heroCharIndex < 0){
 
-            deleting = false;
+            heroDeleting = false;
 
-            phraseIndex++;
+            heroPhraseIndex++;
 
-            if (phraseIndex >= phrases.length) {
+            if(heroPhraseIndex >= heroPhrases.length){
 
-                phraseIndex = 0;
+                heroPhraseIndex = 0;
 
             }
 
@@ -75,195 +123,427 @@ function typeEffect() {
 
     }
 
-    setTimeout(typeEffect, deleting ? 40 : 90);
+    setTimeout(typeHero, heroDeleting ? 40 : 90);
 
 }
 
-typeEffect();
-
 /* ==========================================================
-   SCROLL PROGRESS
+   INTRO TYPING
 ========================================================== */
 
-window.addEventListener("scroll", () => {
+function typeIntro(){
 
-    const scrollTop = document.documentElement.scrollTop;
+    if(!introTyping) return;
 
-    const scrollHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
+    const word = introWords[introWordIndex];
 
-    const progress =
-        (scrollTop / scrollHeight) * 100;
+    introTyping.textContent =
+    word.substring(0,introLetterIndex);
 
-    progressBar.style.width = progress + "%";
+    introLetterIndex++;
+
+    if(introLetterIndex <= word.length){
+
+        setTimeout(typeIntro,110);
+
+    }else{
+
+        setTimeout(()=>{
+
+            introLetterIndex = 0;
+
+            introWordIndex++;
+
+            if(introWordIndex >= introWords.length){
+
+                introWordIndex = 0;
+
+            }
+
+            typeIntro();
+
+        },1200);
+
+    }
+
+}
+
+/* ==========================================================
+   INTRO ANIMATION
+========================================================== */
+
+function playIntro(){
+
+    if(!introScreen){
+
+        typeHero();
+
+        return;
+
+    }
+
+    introCircle.style.animation =
+    "drawCircle 1.4s forwards";
+
+    introPaths.forEach((path,index)=>{
+
+        path.style.animation =
+        `drawPath .8s forwards ${0.5 + index*.2}s`;
+
+    });
+
+    setTimeout(()=>{
+
+        introLine.style.animation =
+        "expandLine .8s forwards";
+
+    },1200);
+
+    setTimeout(()=>{
+
+        introTitle.style.animation =
+        "fadeUp .8s forwards";
+
+    },1450);
+
+    setTimeout(()=>{
+
+        introSubtitle.style.animation =
+        "fadeUp .8s forwards";
+
+    },1650);
+
+    setTimeout(()=>{
+
+        introTyping.style.animation =
+        "fadeUp .8s forwards";
+
+        typeIntro();
+
+    },1850);
+
+    setTimeout(()=>{
+
+        introScreen.classList.add("hide");
+
+        mainContent.classList.add("show");
+
+        typeHero();
+
+        localStorage.setItem(
+            "portfolioVisited",
+            "true"
+        );
+
+    },5200);
+
+}
+
+/* ==========================================================
+   LOAD
+========================================================== */
+
+window.addEventListener("load",()=>{
+
+    if(!introScreen){
+
+        typeHero();
+
+        return;
+
+    }
+
+    const visited =
+    localStorage.getItem("portfolioVisited");
+
+    if(visited){
+
+        introScreen.remove();
+
+        if(mainContent){
+
+            mainContent.classList.add("show");
+
+        }
+
+        typeHero();
+
+    }else{
+
+        playIntro();
+
+    }
 
 });
+
+/* ==========================================================
+   SCROLL MANAGER
+========================================================== */
+
+function updateScrollProgress(){
+
+    if(!progressBar) return;
+
+    const scrollTop = window.scrollY;
+
+    const documentHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    const progress =
+        (scrollTop / documentHeight) * 100;
+
+    progressBar.style.width = `${progress}%`;
+
+}
 
 /* ==========================================================
    HEADER
 ========================================================== */
 
-window.addEventListener("scroll", () => {
+function updateHeader(){
 
-    if (window.scrollY > 40) {
+    if(!header || !navContainer) return;
 
-        header.style.padding = "0";
+    if(window.scrollY > 60){
+
+        header.classList.add("scrolled");
+
+        navContainer.style.padding = "14px 0";
 
         header.style.boxShadow =
-            "0 8px 30px rgba(0,0,0,.15)";
+        "0 10px 35px rgba(0,0,0,.18)";
 
-    } else {
+    }else{
+
+        header.classList.remove("scrolled");
+
+        navContainer.style.padding = "20px 0";
 
         header.style.boxShadow = "none";
 
     }
 
-});
+}
 
 /* ==========================================================
    BACK TO TOP
 ========================================================== */
 
-window.addEventListener("scroll", () => {
+function updateBackToTop(){
 
-    if (window.scrollY > 500) {
+    if(!backToTop) return;
+
+    if(window.scrollY > 450){
 
         backToTop.classList.add("show");
 
-    } else {
+    }else{
 
         backToTop.classList.remove("show");
 
     }
 
-});
+}
 
-backToTop.addEventListener("click", () => {
+if(backToTop){
 
-    window.scrollTo({
+    backToTop.addEventListener("click",()=>{
 
-        top: 0,
+        window.scrollTo({
 
-        behavior: "smooth"
+            top:0,
+
+            behavior:"smooth"
+
+        });
 
     });
 
+}
+
+/* ==========================================================
+   ACTIVE NAVIGATION
+========================================================== */
+
+function updateActiveNavigation(){
+
+    let currentSection = "";
+
+    sections.forEach(section=>{
+
+        const sectionTop =
+        section.offsetTop - 150;
+
+        if(window.scrollY >= sectionTop){
+
+            currentSection =
+            section.getAttribute("id");
+
+        }
+
+    });
+
+    navItems.forEach(link=>{
+
+        link.classList.remove("active");
+
+        if(link.getAttribute("href") ===
+        "#" + currentSection){
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+}
+
+/* ==========================================================
+   SINGLE SCROLL LISTENER
+========================================================== */
+
+window.addEventListener("scroll",()=>{
+
+    updateScrollProgress();
+
+    updateHeader();
+
+    updateBackToTop();
+
+    updateActiveNavigation();
+
 });
+
+/* ==========================================================
+   THEME MANAGER
+========================================================== */
+
+function initializeTheme(){
+
+    if(!themeToggle) return;
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if(savedTheme === "light"){
+
+        document.body.classList.add("light");
+
+        themeToggle.innerHTML =
+        '<i class="fa-solid fa-sun"></i>';
+
+    }else{
+
+        themeToggle.innerHTML =
+        '<i class="fa-solid fa-moon"></i>';
+
+    }
+
+}
+
+if(themeToggle){
+
+    themeToggle.addEventListener("click",()=>{
+
+        document.body.classList.toggle("light");
+
+        const lightMode =
+        document.body.classList.contains("light");
+
+        localStorage.setItem(
+            "theme",
+            lightMode ? "light" : "dark"
+        );
+
+        themeToggle.innerHTML = lightMode
+        ? '<i class="fa-solid fa-sun"></i>'
+        : '<i class="fa-solid fa-moon"></i>';
+
+    });
+
+}
+
 /* ==========================================================
    MOBILE MENU
 ========================================================== */
 
-menuBtn.addEventListener("click", () => {
+function closeMenu(){
 
-    navLinks.classList.toggle("active");
+    if(!navLinks || !menuBtn) return;
+
+    navLinks.classList.remove("active");
 
     const icon = menuBtn.querySelector("i");
 
-    if (navLinks.classList.contains("active")) {
-
-        icon.classList.remove("fa-bars");
-
-        icon.classList.add("fa-xmark");
-
-    } else {
+    if(icon){
 
         icon.classList.remove("fa-xmark");
 
         icon.classList.add("fa-bars");
 
     }
-
-});
-
-/* Close menu after clicking a link */
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navLinks.classList.remove("active");
-
-        const icon = menuBtn.querySelector("i");
-
-        icon.classList.remove("fa-xmark");
-
-        icon.classList.add("fa-bars");
-
-    });
-
-});
-
-/* Close menu with ESC */
-
-document.addEventListener("keydown", (e) => {
-
-    if (e.key === "Escape") {
-
-        navLinks.classList.remove("active");
-
-        const icon = menuBtn.querySelector("i");
-
-        icon.classList.remove("fa-xmark");
-
-        icon.classList.add("fa-bars");
-
-    }
-
-});
-
-/* ==========================================================
-   THEME TOGGLE
-========================================================== */
-
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme === "light") {
-
-    document.body.classList.add("light");
-
-    themeToggle.innerHTML =
-        '<i class="fa-solid fa-sun"></i>';
 
 }
 
-themeToggle.addEventListener("click", () => {
+if(menuBtn){
 
-    document.body.classList.toggle("light");
+    menuBtn.addEventListener("click",()=>{
 
-    if (document.body.classList.contains("light")) {
+        navLinks.classList.toggle("active");
 
-        localStorage.setItem("theme", "light");
+        const icon = menuBtn.querySelector("i");
 
-        themeToggle.innerHTML =
-            '<i class="fa-solid fa-sun"></i>';
+        if(!icon) return;
 
-    } else {
+        if(navLinks.classList.contains("active")){
 
-        localStorage.setItem("theme", "dark");
+            icon.classList.remove("fa-bars");
 
-        themeToggle.innerHTML =
-            '<i class="fa-solid fa-moon"></i>';
+            icon.classList.add("fa-xmark");
+
+        }else{
+
+            icon.classList.remove("fa-xmark");
+
+            icon.classList.add("fa-bars");
+
+        }
+
+    });
+
+}
+
+navItems.forEach(link=>{
+
+    link.addEventListener("click",closeMenu);
+
+});
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        closeMenu();
 
     }
 
 });
 
 /* ==========================================================
-   SCROLL REVEAL
+   PREMIUM SCROLL REVEAL
 ========================================================== */
-
-const reveals = document.querySelectorAll(".reveal");
 
 const revealObserver = new IntersectionObserver(
 
-(entries) => {
+(entries)=>{
 
-    entries.forEach(entry => {
+    entries.forEach(entry=>{
 
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting){
 
             entry.target.classList.add("active");
+
+            revealObserver.unobserve(entry.target);
 
         }
 
@@ -273,53 +553,20 @@ const revealObserver = new IntersectionObserver(
 
 {
 
-    threshold:0.15
+    threshold:0.15,
+
+    rootMargin:"0px 0px -60px 0px"
 
 }
 
 );
 
-reveals.forEach(section => {
+reveals.forEach((element,index)=>{
 
-    revealObserver.observe(section);
+    element.style.transitionDelay =
+    `${index*80}ms`;
 
-});
-
-/* ==========================================================
-   ACTIVE NAVIGATION
-========================================================== */
-
-const sections = document.querySelectorAll("section");
-
-const navItems = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const sectionTop = section.offsetTop - 140;
-
-        if (window.scrollY >= sectionTop) {
-
-            current = section.getAttribute("id");
-
-        }
-
-    });
-
-    navItems.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-
-            link.classList.add("active");
-
-        }
-
-    });
+    revealObserver.observe(element);
 
 });
 
@@ -327,11 +574,14 @@ window.addEventListener("scroll", () => {
    SMOOTH SCROLL
 ========================================================== */
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(anchor=>{
 
-    anchor.addEventListener("click", function(e){
+    anchor.addEventListener("click",function(e){
 
-        const target = document.querySelector(
+        const target =
+        document.querySelector(
             this.getAttribute("href")
         );
 
@@ -341,9 +591,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
         window.scrollTo({
 
-            top: target.offsetTop - 85,
+            top:target.offsetTop-85,
 
-            behavior: "smooth"
+            behavior:"smooth"
 
         });
 
@@ -355,22 +605,149 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    CURRENT YEAR
 ========================================================== */
 
-const yearElement = document.getElementById("year");
-
 if(yearElement){
 
-    yearElement.textContent = new Date().getFullYear();
+    yearElement.textContent =
+    new Date().getFullYear();
+
+}
+/* ==========================================================
+   PERFORMANCE MANAGER
+========================================================== */
+
+let ticking = false;
+
+function handleScroll() {
+
+    updateScrollProgress();
+
+    updateHeader();
+
+    updateBackToTop();
+
+    updateActiveNavigation();
+
+    ticking = false;
+
+}
+
+window.addEventListener("scroll", () => {
+
+    if (!ticking) {
+
+        requestAnimationFrame(handleScroll);
+
+        ticking = true;
+
+    }
+
+});
+
+/* ==========================================================
+   DESKTOP CURSOR GLOW
+========================================================== */
+
+if (window.innerWidth > 992) {
+
+    const cursorGlow = document.createElement("div");
+
+    cursorGlow.className = "cursor-glow";
+
+    document.body.appendChild(cursorGlow);
+
+    document.addEventListener("mousemove", (e) => {
+
+        cursorGlow.style.left = e.clientX + "px";
+
+        cursorGlow.style.top = e.clientY + "px";
+
+    });
 
 }
 
 /* ==========================================================
-   END
+   WINDOW RESIZE
+========================================================== */
+
+window.addEventListener("resize", () => {
+
+    if (window.innerWidth > 768) {
+
+        closeMenu();
+
+    }
+
+});
+
+/* ==========================================================
+   INITIALIZATION
+========================================================== */
+
+function initializePortfolio() {
+
+    initializeTheme();
+
+    updateScrollProgress();
+
+    updateHeader();
+
+    updateBackToTop();
+
+    updateActiveNavigation();
+
+    if (yearElement) {
+
+        yearElement.textContent = new Date().getFullYear();
+
+    }
+
+}
+
+/* ==========================================================
+   DOM READY
+========================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initializePortfolio();
+
+});
+
+/* ==========================================================
+   PORTFOLIO LOADED
 ========================================================== */
 
 console.log(
 
-"%cPortfolio Loaded Successfully 🚀",
+`%c
+███████╗██╗  ██╗ ██████╗  █████╗ ██╗██████╗
+██╔════╝██║  ██║██╔═══██╗██╔══██╗██║██╔══██╗
+███████╗███████║██║   ██║███████║██║██████╔╝
+╚════██║██╔══██║██║   ██║██╔══██║██║██╔══██╗
+███████║██║  ██║╚██████╔╝██║  ██║██║██████╔╝
+╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝
+`,
 
-"color:#4F8CFF;font-size:16px;font-weight:bold;"
+"color:#4F8CFF;font-size:11px;font-weight:bold;"
 
 );
+
+console.log(
+
+"%cPortfolio v1.1.1 Loaded Successfully 🚀",
+
+"color:#22C55E;font-size:14px;font-weight:bold;"
+
+);
+
+console.log(
+
+"%cDesigned & Developed by Syed Madanin Shoaib",
+
+"color:#FFFFFF;font-size:13px;"
+
+);
+
+/* ==========================================================
+   END
+========================================================== */
