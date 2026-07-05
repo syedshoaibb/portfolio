@@ -834,27 +834,23 @@ body.light header.scrolled{
 
 }
 
-.project-featured{
+.project-features{
 
-    display:inline-block;
+    margin:22px 0;
 
-    margin-bottom:18px;
+    padding-left:18px;
 
-    padding:8px 16px;
+    color:var(--text-light);
 
-    border-radius:999px;
+    display:grid;
 
-    background:rgba(79,140,255,.12);
+    gap:8px;
 
-    border:1px solid rgba(79,140,255,.25);
+}
 
-    color:var(--primary);
+.project-features li{
 
-    font-size:.78rem;
-
-    font-weight:600;
-
-    letter-spacing:.8px;
+    list-style:disc;
 
 }
 
